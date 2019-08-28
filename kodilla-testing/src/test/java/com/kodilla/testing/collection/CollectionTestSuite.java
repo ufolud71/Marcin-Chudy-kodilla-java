@@ -30,8 +30,9 @@ public class CollectionTestSuite {
         ArrayList<Integer> even = new ArrayList<Integer>();
         //When
         exterminator.exterminate(number);
+        int result = even.size();
         //Then
-        System.out.println(number.size());
+        Assert.assertEquals(0, result);
     }
     @Test
     public void testOddNumbersExterminatorNormalList() {
@@ -39,16 +40,15 @@ public class CollectionTestSuite {
         OddNumbersExterminator exterminator = new OddNumbersExterminator();
         ArrayList<Integer> number = new ArrayList<Integer>();
         ArrayList<Integer> even = new ArrayList<Integer>();
-        number.add(5);
+        number.add(6);
         number.add(22);
         number.add(9);
         number.add(14);
         //When
         exterminator.exterminate(number);
+        int result = even.size();
         //Then
-        for(Integer n: even) {
-            System.out.println(n);
-        }
+        Assert.assertEquals(3, result);
 
     }
 
