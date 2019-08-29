@@ -45,10 +45,9 @@ public class CollectionTestSuite {
         number.add(9);
         number.add(14);
         //When
-        exterminator.exterminate(number);
-        int result = even.size();
+        ArrayList<Integer> result = exterminator.exterminate(number);
         //Then
-        Assert.assertEquals(3, result);
+        Assert.assertEquals(3, result.size());
 
     }
 
