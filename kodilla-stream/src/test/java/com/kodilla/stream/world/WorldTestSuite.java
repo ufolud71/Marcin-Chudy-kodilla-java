@@ -1,8 +1,9 @@
-package com.kodilla.stream;
+package com.kodilla.stream.world;
 
 import com.kodilla.stream.world.Continent;
 import com.kodilla.stream.world.Country;
 import com.kodilla.stream.world.World;
+import org.junit.Assert;
 import org.junit.Test;
 import java.math.BigDecimal;
 
@@ -16,6 +17,7 @@ public class WorldTestSuite {
     public void testGetPeopleQuantity() {
         //Given
         World world = new World();
+        List<Continent> continents = new ArrayList<Continent>();
         world.addContinent(new Continent(new Country("Poland", new BigDecimal("38000000")), "Europe" ));
         world.addContinent(new Continent(new Country("Germany", new BigDecimal("83000000")), "Europe" ));
         world.addContinent(new Continent(new Country("Thailand", new BigDecimal("69000000")), "Asia" ));
@@ -23,11 +25,10 @@ public class WorldTestSuite {
         world.addContinent(new Continent(new Country("Canada", new BigDecimal("37600000")), "North America" ));
         world.addContinent(new Continent(new Country("Greenland", new BigDecimal("56171")), "North America" ));
         //When
-
-
-        //
-
-
+        BigDecimal total = world.getPeopleQuantity(continents);
+        //Then
+        BigDecimal expected = new BigDecimal("251436171");
+        Assert.assertEquals(expected, total);
 
     }
 }
