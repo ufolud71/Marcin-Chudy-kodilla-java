@@ -17,7 +17,6 @@ public class MovieStoreMain {
                 .flatMap(e -> e.stream())
                 .collect(Collectors.joining("!"));
 
-
         System.out.println(finalList);
 
     }
