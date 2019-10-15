@@ -6,6 +6,7 @@ public class PurchaseRequest {
     public String item;
     public int quantity;
 
+
     public PurchaseRequest(User user, String item, int quantity) {
         this.user = user;
         this.item = item;

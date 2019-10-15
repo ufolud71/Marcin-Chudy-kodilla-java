@@ -1,27 +1,25 @@
 package challenge2;
 
-public class HealthyShop {
+public class HealthyShop implements Shop{
     private PurchaseService purchaseService;
-    private PurchaseRepository purchaseRepository;
-    private InformationService informationService;
 
-    public HealthyShop(PurchaseService purchaseService, PurchaseRepository purchaseRepository, InformationService informationService) {
+    public HealthyShop(PurchaseService purchaseService) {
         this.purchaseService = purchaseService;
-        this.purchaseRepository = purchaseRepository;
-        this.informationService = informationService;
     }
 
-    public PurchaseDto process(final PurchaseRequest purchaseRequest) {
-        System.out.println("Your order at HealthyShop has started");
+    @Override
+    public void process(PurchaseRequestRetriever purchaseRequestRetriever) {
+        System.out.println("Starting your order at HealthyShop");
+        purchaseRequestRetriever.retrieve();
+        boolean purchaseCompleted = purchaseService.buy(purchaseRequestRetriever.getUser(), purchaseRequestRetriever.getItem(), purchaseRequestRetriever.getQuantity());
+        System.out.println("User: " + purchaseRequestRetriever.getUser() + "." + " Your order consist of: " +
+                purchaseRequestRetriever.getItem() + " in quantity of: " + purchaseRequestRetriever.getQuantity());
 
-        boolean purchaseCompleted = purchaseService.buy(purchaseRequest);
+        if (purchaseCompleted) {
+            System.out.println("Your order at HealthyShop was created successfully");
 
-        if(purchaseCompleted) {
-            informationService.inform(purchaseRequest.getUser());
-            purchaseRepository.createPurchase(purchaseRequest);
-            return new PurchaseDto(purchaseRequest.getUser(), true);
         } else {
-            return new PurchaseDto(purchaseRequest.getUser(), false);
+            System.out.println("There was an error!");
         }
     }
 }

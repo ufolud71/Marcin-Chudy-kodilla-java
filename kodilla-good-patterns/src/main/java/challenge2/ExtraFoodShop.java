@@ -1,28 +1,25 @@
 package challenge2;
 
-public class ExtraFoodShop {
-
+public class ExtraFoodShop implements Shop {
     private PurchaseService purchaseService;
-    private PurchaseRepository purchaseRepository;
-    private InformationService informationService;
 
-    public ExtraFoodShop(PurchaseService purchaseService, PurchaseRepository purchaseRepository, InformationService informationService) {
+    public ExtraFoodShop(PurchaseService purchaseService) {
         this.purchaseService = purchaseService;
-        this.purchaseRepository = purchaseRepository;
-        this.informationService = informationService;
     }
 
-        public PurchaseDto process(final PurchaseRequest purchaseRequest) {
-        System.out.println("Your order at ExtraFoodShop has started");
-
-        boolean purchaseCompleted = purchaseService.buy(purchaseRequest);
+    @Override
+    public void process(final PurchaseRequestRetriever purchaseRequestRetriever) {
+        System.out.println("Starting your order at ExtraFoodShop");
+        purchaseRequestRetriever.retrieve();
+        boolean purchaseCompleted = purchaseService.buy(purchaseRequestRetriever.getUser(), purchaseRequestRetriever.getItem(), purchaseRequestRetriever.getQuantity());
+        System.out.println("User: " + purchaseRequestRetriever.getUser() + "." + " Your order consist of: " +
+                purchaseRequestRetriever.getItem() + " in quantity of: " + purchaseRequestRetriever.getQuantity());
 
         if(purchaseCompleted) {
-            informationService.inform(purchaseRequest.getUser());
-            purchaseRepository.createPurchase(purchaseRequest);
-            return new PurchaseDto(purchaseRequest.getUser(), true);
+            System.out.println("Your order at ExtraFoodShop was created successfully");
+
         } else {
-            return new PurchaseDto(purchaseRequest.getUser(), false);
+            System.out.println("There was an error!");
         }
     }
 }
