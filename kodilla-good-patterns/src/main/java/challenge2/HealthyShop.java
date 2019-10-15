@@ -1,11 +1,9 @@
 package challenge2;
 
-public class ExtraFoodShop implements Shop {
+public class HealthyShop implements Shop{
 
     @Override
     public void process(PurchaseRequestRetriever purchaseRequestRetriever) {
-        System.out.println("Starting your order at ExtraFoodShop");
-
+        System.out.println("Starting your order at HealthyShop");
     }
 }
-
