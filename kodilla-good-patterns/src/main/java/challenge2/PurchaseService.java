@@ -1,5 +1,8 @@
 package challenge2;
 
-public interface PurchaseService {
-    public boolean buy(User user, String item, int quantity);
+public class PurchaseService {
+
+    public void processOrder(Shop shop, PurchaseRequestRetriever purchaseRequestRetriever) {
+
+    }
 }

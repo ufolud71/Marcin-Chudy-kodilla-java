@@ -5,15 +5,14 @@ public class PurchaseRequestRetriever {
     public User user;
     public String item;
     public int quantity;
-    public boolean purchaseCompleted;
+
+    public PurchaseRequestRetriever(User user, String item, int quantity) {
+        this.user = user;
+        this.item = item;
+        this.quantity = quantity;
+    }
 
     public PurchaseRequest retrieve() {
-
-        User user = new User("Marian", "Kowalski", "kovlsky001");
-
-        String item = "Salmon";
-        int quantity = 3;
-
         return new PurchaseRequest(user, item, quantity);
     }
 
@@ -29,7 +28,4 @@ public class PurchaseRequestRetriever {
         return quantity;
     }
 
-    public boolean isCompleted() {
-        return purchaseCompleted;
-    }
 }
