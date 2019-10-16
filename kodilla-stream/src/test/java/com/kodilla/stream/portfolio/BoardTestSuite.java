@@ -156,13 +156,16 @@ public class BoardTestSuite {
         long days = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(n -> n.getTasks().stream())
-                .map(n -> n.getDeadline().getTime() - n.getCreated().getDayOfMonth())
+                .map(n -> n.getCreated().getDayOfMonth() - n.getDeadline().getDayOfMonth())
                 .collect(Collectors.summingInt(Integer::intValue));
+
+        double average = days/tasks;
 
 
         //Then
         Assert.assertEquals(3, tasks);
-        Assert.assertEquals(5, days);
+        Assert.assertEquals(6, days);
+        Assert.assertEquals(2.0, average, 1);
 
     }
 
