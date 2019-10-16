@@ -18,5 +18,3 @@ public class PurchaseDto {
         return purchaseCompleted;
     }
 }
-
-

@@ -1,3 +1,4 @@
+
 package challenge2;
 
 public class User {
@@ -23,4 +24,3 @@ public class User {
         return username;
     }
 }
-

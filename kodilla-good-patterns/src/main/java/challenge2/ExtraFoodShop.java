@@ -8,4 +8,3 @@ public class ExtraFoodShop implements Shop {
 
     }
 }
-

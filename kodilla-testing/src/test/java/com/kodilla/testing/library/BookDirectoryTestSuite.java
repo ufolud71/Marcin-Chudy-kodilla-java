@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -101,7 +102,7 @@ public class BookDirectoryTestSuite {
                 .thenReturn(resultListOfBooks);
 
         //When
-        ArrayList<Book> userBooks = bookLibrary.listBooksInHandsOf(user);
+        List<Book> userBooks = bookLibrary.listBooksInHandsOf(user);
 
         //Then
         assertEquals(0, userBooks.size());
@@ -120,7 +121,7 @@ public class BookDirectoryTestSuite {
                 .thenReturn(resultListOfBooks);
 
         //When
-        ArrayList<Book> userBooks = bookLibrary.listBooksInHandsOf(user);
+        List<Book> userBooks = bookLibrary.listBooksInHandsOf(user);
 
         //Then
         assertEquals(1, userBooks.size());
@@ -150,7 +151,7 @@ public class BookDirectoryTestSuite {
                 .thenReturn(resultListOfBooks);
 
         //When
-        ArrayList<Book> userBooks = bookLibrary.listBooksInHandsOf(user);
+        List<Book> userBooks = bookLibrary.listBooksInHandsOf(user);
 
         //Then
         assertEquals(5, userBooks.size());
