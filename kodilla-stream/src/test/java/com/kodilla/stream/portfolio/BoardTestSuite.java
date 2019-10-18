@@ -158,7 +158,7 @@ public class BoardTestSuite {
         long days = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(n -> n.getTasks().stream())
-                .map(n -> DAYS.between(n.getCreated(), n.getDeadline()))
+                .map(n -> DAYS.between(n.getCreated(), LocalDate.now()))
                 .mapToInt(n -> Math.toIntExact(n))
                 .sum();
 
@@ -167,9 +167,8 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(3, tasks);
-        Assert.assertEquals(55, days);
-        Assert.assertEquals(18.0, average, 0.1);
+        Assert.assertEquals(30, days);
+        Assert.assertEquals(10.0, average, 0.1);
 
     }
-
 }
