@@ -10,6 +10,7 @@ import java.util.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
@@ -153,19 +154,21 @@ public class BoardTestSuite {
                 .flatMap(n -> n.getTasks().stream())
                 .count();
 
+
         long days = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(n -> n.getTasks().stream())
-                .map(n -> n.getCreated().getDayOfMonth() - n.getDeadline().getDayOfMonth())
-                .collect(Collectors.summingInt(Integer::intValue));
+                .map(n -> DAYS.between(n.getCreated(), n.getDeadline()))
+                .mapToInt(n -> Math.toIntExact(n))
+                .sum();
 
         double average = days/tasks;
 
 
         //Then
         Assert.assertEquals(3, tasks);
-        Assert.assertEquals(6, days);
-        Assert.assertEquals(2.0, average, 1);
+        Assert.assertEquals(55, days);
+        Assert.assertEquals(18.0, average, 0.1);
 
     }
 
