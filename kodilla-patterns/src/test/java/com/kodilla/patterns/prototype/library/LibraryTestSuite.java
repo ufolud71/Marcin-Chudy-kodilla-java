@@ -32,7 +32,7 @@ public class LibraryTestSuite {
         Library deepClonedLibrary = null;
         try {
             deepClonedLibrary = library.deepCopy();
-            deepClonedLibrary.setName("Project number 3");
+            deepClonedLibrary.setName("Library 3");
         } catch (CloneNotSupportedException e) {
             System.out.println(e);
         }
