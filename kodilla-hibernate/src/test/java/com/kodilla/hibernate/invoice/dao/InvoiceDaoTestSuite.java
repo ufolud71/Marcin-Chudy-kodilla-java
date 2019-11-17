@@ -42,7 +42,7 @@ public class InvoiceDaoTestSuite {
         item3.setInvoice(invoice);
 
         item1.setProduct(product);
-
+        productDao.save(product);
 
         //When
         invoiceDao.save(invoice);
