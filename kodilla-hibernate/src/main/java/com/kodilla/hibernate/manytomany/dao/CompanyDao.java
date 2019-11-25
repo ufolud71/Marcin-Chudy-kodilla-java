@@ -13,6 +13,6 @@ import java.util.List;
 public interface CompanyDao extends CrudRepository<Company, Integer> {
 
     @Query
-    List<Company> retrieveCompanyNameStartingWith(@Param("NAME%") String name);
+    List<Company> retrieveCompanyNameStartingWith(@Param("NAME") String fragment);
 
 }

@@ -92,4 +92,34 @@ public class CompanyDaoTestSuite {
             employeeDao.deleteById(id3);
         }
     }
+
+    @Test
+    public void retrieveCompanyNameStartingWith() {
+        //Given
+        Company c1 = new Company("Company1");
+        Company c2 = new Company("Company2");
+        Company c3 = new Company("Sony");
+
+        companyDao.save(c1);
+        int id = c1.getId();
+        companyDao.save(c2);
+        int id2 = c2.getId();
+        companyDao.save(c3);
+        int id3 = c3.getId();
+
+        //When
+        List<Company>companiesStartingWith = companyDao.retrieveCompanyNameStartingWith("Com%");
+
+        //Then
+        Assert.assertEquals(2, companiesStartingWith.size());
+
+        //CleanUp
+        try {
+            companyDao.deleteById(id);
+            companyDao.deleteById(id2);
+            companyDao.deleteById(id3);
+        } catch (Exception e) {
+            //Nothing
+        }
+    }
 }
