@@ -1,6 +1,10 @@
 package com.kodilla.testing.forum.statistics;
 
 import org.junit.*;
+import com.kodilla.testing.forum.statistics.CalculateStatistics;
+import com.kodilla.testing.forum.statistics.Statistics;
+
+import java.util.ArrayList;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -27,6 +31,20 @@ public class CalculateStatisticsTestSuite {
     public void testCalculateAdvStatistics(){
         //Given
         Statistics statisticsMock = mock(Statistics.class);
+        ArrayList<String> userNames = new ArrayList<String>();
+        userNames.add("Thomas");
+        userNames.add("John");
+        userNames.add("Dave");
+        userNames.add("Jordan");
+        int postsCount = 0;
+        int commentsCount = 10;
+        when(statisticsMock.getUsersNames()).thenReturn(userNames);
+
+        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
+
+        calculateStatistics.calculateAdvStatistics(statisticsMock);
+
+
 
 
 

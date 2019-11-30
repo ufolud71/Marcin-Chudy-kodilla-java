@@ -18,18 +18,37 @@ public class WorldTestSuite {
         //Given
         World world = new World();
         List<Continent> continents = new ArrayList<Continent>();
-        world.addContinent(new Continent(new Country("Poland", new BigDecimal("38000000")), "Europe" ));
-        world.addContinent(new Continent(new Country("Germany", new BigDecimal("83000000")), "Europe" ));
-        world.addContinent(new Continent(new Country("Thailand", new BigDecimal("69000000")), "Asia" ));
-        world.addContinent(new Continent(new Country("Taiwan", new BigDecimal("23780000")), "Asia" ));
-        world.addContinent(new Continent(new Country("Canada", new BigDecimal("37600000")), "North America" ));
-        world.addContinent(new Continent(new Country("Greenland", new BigDecimal("56171")), "North America" ));
+        List<Country> countries = new ArrayList<>();
+
+        Continent continent1 = new Continent("Europe");
+        Continent continent2 = new Continent("Asia");
+        Continent continent3 = new Continent("North America");
+
+        Country c1 = new Country("Poland", new BigDecimal("38000000"));
+        Country c2 = new Country("Germany", new BigDecimal("83000000"));
+        Country c3 = new Country("Thailand", new BigDecimal("69000000"));
+        Country c4 = new Country("Taiwan", new BigDecimal("23780000"));
+        Country c5 = new Country("Canada", new BigDecimal("37600000"));
+        Country c6 = new Country("Greenland", new BigDecimal("56171"));
+
+        continents.add(continent1);
+        continents.add(continent2);
+        continents.add(continent3);
+        world.addContinent(continent1);
+        world.addContinent(continent2);
+        world.addContinent(continent3);
+        continent1.addCountry(c1);
+        continent1.addCountry(c2);
+        continent3.addCountry(c3);
+        continent3.addCountry(c4);
+        continent2.addCountry(c5);
+        continent2.addCountry(c6);
         //When
         BigDecimal total = world.getPeopleQuantity(continents);
         //Then
         BigDecimal expected = new BigDecimal("251436171");
-        BigDecimal chwilowe = new BigDecimal("0");
-        Assert.assertEquals(chwilowe, total);
+
+        Assert.assertEquals(expected, total);
 
     }
 }

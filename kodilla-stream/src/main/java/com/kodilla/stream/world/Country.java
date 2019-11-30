@@ -5,29 +5,20 @@ import java.math.BigDecimal;
 public final class Country {
 
     private final BigDecimal peopleQuantity;
-    private final String name;
+    private final String countryName;
 
-    public Country(final String name, final BigDecimal peopleQuantity) {
+    public Country(final String countryName, final BigDecimal peopleQuantity) {
         this.peopleQuantity = peopleQuantity;
-        this.name = name;
+        this.countryName = countryName;
     }
 
-    public String getName() {
-        return name;
+    public String getCountryName() {
+        return countryName;
     }
 
     public BigDecimal getPeopleQuantity() {
         return peopleQuantity;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Country)) return false;
-
-        Country country = (Country) o;
-
-        return getName().equals(country.getName());
-    }
 
 }

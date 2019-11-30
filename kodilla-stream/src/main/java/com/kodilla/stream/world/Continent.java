@@ -5,18 +5,16 @@ import java.util.List;
 import java.math.BigDecimal;
 
 public final class Continent {
-    private final String cName;
-    private final Country country;
+    private final String continentName;
     private final List<Country> countries = new ArrayList<>();
 
 
-    public Continent(final Country country, final String cName) {
-        this.cName = cName;
-        this.country = country;
+    public Continent(String continentName) {
+        this.continentName = continentName;
     }
 
-    public Country getCountry() {
-        return country;
+    public void addCountry(Country country) {
+        countries.add(country);
     }
 
     public ArrayList<Country> getCountries() {
